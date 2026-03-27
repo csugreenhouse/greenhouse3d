@@ -1,0 +1,2 @@
+Photos are to be stored here of one plant
+Each photo will have multiple april tags visible
