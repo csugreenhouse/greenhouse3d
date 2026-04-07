@@ -8,7 +8,7 @@ from matplotlib.lines import Line2D
 
 color_pallet = ['cyan', 'yellow', 'magenta', 'orange', 'pink', 'lime', 'aqua']
 
-import cameracapture as cameracapture
+import utils.cameracapture as cameracapture
 
 def scan_raw_tags(image):
     gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
@@ -33,9 +33,6 @@ def sort_corners(corners):
     return [top_left, top_right, bottom_right, bottom_left]
 
 def scan_apriltags(image):
-    """
-    Uses pupil_apriltags for detection but returns the SAME dict format you already use.
-    """
     results = scan_raw_tags(image)
 
     DECISION_MARGIN = 40.0
@@ -87,14 +84,3 @@ def plot_reference_tag(image,out_path, reference_tag):
     ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05),ncol=2)
     plt.savefig(str(out_path), bbox_inches="tight")
     plt.close(fig)
-
-
-'''#for testing functionality.
-def main():
-    image_path = 'testfiles/20260327_132921_757689.jpg'
-    image = cv2.imread(image_path)
-
-    detected_tags = scan_apriltags(image)
-    print(f"Successfully detected {len(detected_tags)} tag(s).")
-
-main()'''
